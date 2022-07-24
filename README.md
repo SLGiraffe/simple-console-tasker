@@ -1,5 +1,5 @@
 # simple-console-tasker
-After starting programm, write your tasks or enter ```-``` for a pass
+After starting programm, write your task or enter ```-``` for a pass
 
 ```q``` - exit
 ```del``` - delete task by index
