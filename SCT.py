@@ -43,6 +43,7 @@ def main(tasks):
                 
         # visualization of all info
         with open('tasks.json','w') as j_file:
+            os.system("mode con cols=80 lines=20")
             os.system('cls')
             json.dump(tasks, j_file, indent=4)
             
@@ -50,16 +51,14 @@ def main(tasks):
             for item in tasks.items():
                 if item[1] == 'COMPLETED':
                         count_completed += 1
-                        print(item[0] + " - " + Fore.GREEN + item[1], end="")
-                        print(Style.RESET_ALL)
+                        print(" " + Style.RESET_ALL + item[0] + " - " + Fore.GREEN + item[1] + Style.RESET_ALL)
 
                 elif item[1] == "---":
                         count_deleted += 1
-                        print(item[0] + " - " + Fore.RED + item[1], end="")
-                        print(Style.RESET_ALL)
+                        print(" " + Style.RESET_ALL + item[0] + " - " + Fore.RED + item[1] + Style.RESET_ALL)
                 else:
-                    print(f'{item[0]} - {item[1]}')
-                print ('────────────────────────────────────────────────────────────────────────────────')
+                    print(" " + Style.RESET_ALL + item[0] + " - "  + item[1] + Style.RESET_ALL)
+                print ('───────────────────────────────────────────────────────────────────────────────')
             
             if error_input:
                 print (Fore.RED + 'Enter number from 1 to 7')
@@ -67,11 +66,11 @@ def main(tasks):
                 error_input = False
             print(Back.GREEN + "completed tasks - " + str(count_completed) + Style.RESET_ALL , 
                 end="                                            ")
-            print(Back.RED + "deleted tasks - " + str(count_deleted), end="")
-            print(Style.RESET_ALL)
+            print(Back.RED + "deleted tasks - " + str(count_deleted) + Style.RESET_ALL, end="")
             count_completed = 0
             count_deleted = 0
             
-with open('tasks.json','r+') as j_file:
-    tasks = json.load(j_file)
-    main(tasks)
+if __name__ == "__main__":
+    with open('tasks.json','r+') as j_file:
+        tasks = json.load(j_file)
+        main(tasks)
